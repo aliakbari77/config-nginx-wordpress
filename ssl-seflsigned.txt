@@ -1,0 +1,2 @@
+# create the self-signed certification
+# fill the common name with: a.fardaadco.ir

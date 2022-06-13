@@ -1,0 +1,3 @@
+# at the database -->
+# edit the wp-options table
+# update the site_url and home to "https://a.fardaadco.ir/1"
