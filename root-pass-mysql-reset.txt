@@ -1,0 +1,25 @@
+# Enter the container
+docker exec -it mysql bash
+# Set to skip loading of permission table 
+# Warning: This means that any user can log in and perform any operations, which is quite insecure.
+echo "skip-grant-tables" >>/etc/mysql/conf.d/docker.cnf
+# Exit the container
+exit
+# Restart the container
+docker restart mysql
+# Enter the container again
+docker exec -it mysql bash
+# Login to mysql (no password required)
+mysql -uroot 
+# Update permissions
+flush privileges;
+# change Password
+alter user'root'@'localhost' identified by '123456';
+# Exit mysql
+exit
+# Replace the loading parameters of the skip permission table just added
+sed -i "s/skip-grant-tables//"/etc/mysql/conf.d/docker.cnf
+# Exit the container
+exit
+# Restart the container
+docker restart mysql
